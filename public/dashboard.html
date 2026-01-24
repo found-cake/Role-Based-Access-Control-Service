@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | RBAC Service</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">RBAC Service</div>
+            <div class="nav-links">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span id="user-greeting" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+                    <a href="#" class="btn btn-outline" id="nav-logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="fade-in">
+            <h2 style="margin-bottom: 2rem;">Dashboard</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <!-- Profile Card -->
+                <div class="glass-card">
+                    <h3 style="margin-top: 0;">My Profile</h3>
+                    <div style="margin-top: 1.5rem; color: var(--text-muted);">
+                        <p><strong style="color: white;">Name:</strong> <span id="profile-name">Loading...</span></p>
+                        <p><strong style="color: white;">Email:</strong> <span id="profile-email">Loading...</span></p>
+                        <p><strong style="color: white;">Role:</strong> <span id="profile-role"
+                                style="background: rgba(79, 70, 229, 0.2); padding: 2px 8px; border-radius: 4px; color: var(--primary); font-size: 0.8rem;">LOADING</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Status Card -->
+                <div class="glass-card">
+                    <h3 style="margin-top: 0;">System Status</h3>
+                    <div style="margin-top: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
+                            <span>API Service: <strong>Online</strong></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
+                            <span>Database: <strong>Connected</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Dashboard specific logic to guard route
+        if (!localStorage.getItem('token')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+
+</html>
